@@ -14,7 +14,7 @@ class _JsonParseDemoState extends State<JsonParseDemo> {
   //
   List<User> _users;
   bool _loading = true;
-  
+  bool _show= false;
   List<User> _usersForDisplay;
   @override
   void initState() {
@@ -24,7 +24,8 @@ class _JsonParseDemoState extends State<JsonParseDemo> {
       setState(() {
         _users = users;
         _loading = false;
-        _usersForDisplay = _users;
+        _usersForDisplay = users;
+        _show = true;
       });
     });
   }
@@ -35,15 +36,15 @@ class _JsonParseDemoState extends State<JsonParseDemo> {
       appBar: AppBar(
         title: Text(_loading ? 'Loading...' : 'Users'),
       ),
-      body:  Container(
+      body: _show? Container(
         color: Colors.white,
         child: ListView.builder(
-          itemCount:_usersForDisplay.length+1,
+          itemCount:_users.length+1,
           itemBuilder: (context, index) {
             return index == 0? _searchBar(): _listItem(index-1);
           },
         ),
-      ),
+      ):Center(child: CircularProgressIndicator()),
     );
   }
     _searchBar(){
