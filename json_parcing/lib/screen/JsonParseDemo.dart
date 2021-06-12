@@ -14,7 +14,7 @@ class _JsonParseDemoState extends State<JsonParseDemo> {
   //
   List<User> _users;
   bool _loading = true;
-  bool _show = false;
+  
   List<User> _usersForDisplay;
   @override
   void initState() {
@@ -24,7 +24,6 @@ class _JsonParseDemoState extends State<JsonParseDemo> {
       setState(() {
         _users = users;
         _loading = false;
-        _show = true;
         _usersForDisplay = _users;
       });
     });
